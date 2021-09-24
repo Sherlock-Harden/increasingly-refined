@@ -1,0 +1,17 @@
+# macOS General
+.DS_Store
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Generated files
+.idea
+*.iml
+.metadata
+.project
+.settings/
+target
+out
