@@ -1,0 +1,12 @@
+config:
+  beans:
+    - property1: property1
+      property2: property2
+      strings:
+        - aaa
+        - bbb
+        - ccc
+    - property1: property1-1
+      property2: property2-2
+      strings: qwe,rty,uio
+  array: aaa,vvvv,cccc
