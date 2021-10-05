@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.practice.shiro.config.ShiroConfig,\
+  org.practice.shiro.config.ShiroFilterProperties

@@ -1,0 +1,36 @@
+logging:
+  level:
+    root: debug
+
+shiro:
+  filter:
+    login-url: /web/login
+    login: /login
+    logout: /logout
+    unauthorized-url: /error
+    anon:
+      - /**
+#    authc:
+#      - /**
+
+#spring:
+#  datasource:
+#    url: jdbc:mysql://10.10.94.188/devops_platform?useAffectedRows=true&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: 123456
+#  redis:
+#    cluster:
+#      nodes: 10.10.94.162:8001
+#    password: 123456
+#
+#mybatis-plus:
+#  mapper-locations: classpath*:mapper/*Mapper.xml
+#  typeAliasesPackage:  com.neusoft.automotives.devops.server.pojo
+#  global-config:
+#    db-config:
+#      id-type: auto
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    cache-enabled: false
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
