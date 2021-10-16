@@ -16,7 +16,7 @@
     <relativePath />
   </parent>
 
-  <groupId>org.springboot.practice</groupId>
+  <groupId>org.practice.springboot</groupId>
   <artifactId>practice-spring-boot</artifactId>
   <version>1.0.0</version>
 
