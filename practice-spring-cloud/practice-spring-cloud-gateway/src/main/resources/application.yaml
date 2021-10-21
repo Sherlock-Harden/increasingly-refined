@@ -8,13 +8,13 @@ spring:
       discovery:
         locator:
           enabled: true #开启从eureka拉取服务列表，并自动映射
-      routes:
-        - id: route1
-          uri: lb://TEST-1  #lb 负载均衡
-          predicates: # 断言类型分为 Path Query(Query=id,. # 参数名，匹配规则支持正则) Method Host Cookie 由上往下一次匹配
-            - Path=/test/**
-          filters:
-            - StripPrefix=1 #去掉断言路径 N级
+#      routes:
+#        - id: route1
+#          uri: lb://TEST-1  #lb 负载均衡
+#          predicates: # 断言类型分为 Path Query(Query=id,. # 参数名，匹配规则支持正则) Method Host Cookie 由上往下一次匹配
+#            - Path=/test-1/**
+#          filters:
+#            - StripPrefix=1 #去掉断言路径 N级
 
 eureka:
   client:
