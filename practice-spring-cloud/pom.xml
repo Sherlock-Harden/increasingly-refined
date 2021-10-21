@@ -18,6 +18,7 @@
   <modules>
     <module>practice-eureka-server</module>
     <module>practice-spring-cloud-gateway</module>
+    <module>practice-spring-cloud-test</module>
   </modules>
 
   <dependencies>

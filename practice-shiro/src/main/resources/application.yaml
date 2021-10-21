@@ -18,7 +18,6 @@ shiro:
 #    authc:
 #      - /**
 
-
 #spring:
 #  datasource:
 #    url: jdbc:mysql://10.10.94.188/devops_platform?useAffectedRows=true&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false

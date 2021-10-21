@@ -4,10 +4,10 @@ server:
 spring:
   application:
     name: practice-eureka-server
-  security:
-    user:
-      name: admin
-      password: admin
+#  security:
+#    user:
+#      name: admin
+#      password: admin
 
 eureka:
   instance:
@@ -16,4 +16,4 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-server-15001:15001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-server-15002:15002/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ # http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-server-15001:15001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-server-15002:15002/eureka/

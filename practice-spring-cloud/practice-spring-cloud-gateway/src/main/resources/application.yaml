@@ -1,17 +1,22 @@
 server:
   port: 15010
 spring:
+  application:
+    name: practic-spring-cloud-gateway
   cloud:
     gateway:
-      routes:
-        - id: route1
-          uri: http://localhost:15000
-          predicates: # 断言类型分为 Path Query(Query=id,. # 参数名，匹配规则支持正则) Method Host Cookie 由上往下一次匹配
-            - Path=/test/**
-          filters: #
-            - StripPrefix=1
-
+      discovery:
+        locator:
+          enabled: true
+#      routes:
+#        - id: route1
+#          uri: http://localhost:15000
+#          predicates: # 断言类型分为 Path Query(Query=id,. # 参数名，匹配规则支持正则) Method Host Cookie 由上往下一次匹配
+#            - Path=/test/**
+#          filters:
+#            - StripPrefix=1
 
 eureka:
   client:
-    service-url: http://admin:admin@localhost:15000/eureka/
+    service-url:
+      defaultZone: http://localhost:15000/eureka/
