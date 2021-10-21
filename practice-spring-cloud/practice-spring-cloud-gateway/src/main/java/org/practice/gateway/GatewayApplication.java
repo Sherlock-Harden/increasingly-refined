@@ -22,7 +22,7 @@ public class GatewayApplication {
 
     return rlb.routes()
         .route(r -> r.path("/baidu").filters(f -> f.stripPrefix(1)).uri("https://www.baidu.com"))
-        .route(r -> r.path("/test-1").filters(f -> f.stripPrefix(1)).uri("lb://TEST-1"))
+        .route(r -> r.path("/test-2/**").filters(f -> f.stripPrefix(1)).uri("lb://TEST-1"))
         .build();
 
   }
