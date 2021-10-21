@@ -20,3 +20,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:15000/eureka/
+
+#自定义负载均衡
+TEST-1:
+  ribbon:
+    NFLoadBalancerRuleClassName: org.practice.gateway.CustomizeLoadBalancerRule
