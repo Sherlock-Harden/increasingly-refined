@@ -1,0 +1,10 @@
+server:
+  port: 15998
+spring:
+  application:
+    name: test-1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:15000/eureka/

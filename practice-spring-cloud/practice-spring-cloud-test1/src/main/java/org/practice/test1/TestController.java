@@ -1,4 +1,4 @@
-package org.practice.test;
+package org.practice.test1;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
