@@ -1,6 +1,7 @@
-package org.practice;
+package org.practice.starter;
 
-import org.springframework.beans.factory.annotation.Value;
+import javax.annotation.Resource;
+import org.practice.starter.service.PracticeStarterService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,22 +11,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2020/11/24 20:42
  **/
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class StarterApplication implements CommandLineRunner {
 
-
-  @Value("${maxwell.house}")
-  public String s;
-
-  @Value("${server.port}")
-  public String s1;
+  @Resource
+  private PracticeStarterService practiceStarterService;
 
   public static void main(String[] args) {
-    SpringApplication.run(Application.class, args);
+    SpringApplication.run(StarterApplication.class, args);
   }
 
   @Override
   public void run(String... args) {
-    System.out.println(s);
-    System.out.println(s1);
+    System.out.println(practiceStarterService.sout());
   }
 }

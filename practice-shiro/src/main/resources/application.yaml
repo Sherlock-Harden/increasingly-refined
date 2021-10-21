@@ -1,6 +1,11 @@
+server:
+  port: 15020
 logging:
   level:
     root: debug
+spring:
+  application:
+    name: practice-shiro
 
 shiro:
   filter:
@@ -12,6 +17,7 @@ shiro:
       - /**
 #    authc:
 #      - /**
+
 
 #spring:
 #  datasource:

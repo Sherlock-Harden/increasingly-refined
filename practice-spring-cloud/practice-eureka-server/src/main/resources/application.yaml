@@ -1,0 +1,19 @@
+server:
+  port: 15000
+
+spring:
+  application:
+    name: practice-eureka-server
+  security:
+    user:
+      name: admin
+      password: admin
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-server-15001:15001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-server-15002:15002/eureka/

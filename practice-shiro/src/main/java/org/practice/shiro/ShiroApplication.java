@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2021/09/26 16:43
  **/
 @SpringBootApplication
-public class Application {
+public class ShiroApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(Application.class, args);
+    SpringApplication.run(ShiroApplication.class, args);
   }
 }
