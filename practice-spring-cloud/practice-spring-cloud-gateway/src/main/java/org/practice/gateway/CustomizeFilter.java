@@ -1,9 +1,12 @@
 package org.practice.gateway;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
+import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.MultiValueMap;
@@ -26,7 +29,15 @@ public class CustomizeFilter implements GlobalFilter, Ordered {
     List<String> list = queryParams.get("xxx");
 
     if (list == null || list.isEmpty()) {
-      return exchange.getResponse().setComplete();
+
+      exchange.getResponse().setStatusCode(HttpStatus.NOT_FOUND);
+
+      //第一种
+      //return exchange.getResponse().setComplete();
+
+      //第二种
+      DataBuffer dataBuffer = exchange.getResponse().bufferFactory().wrap("wanshi".getBytes(StandardCharsets.UTF_8));
+      exchange.getResponse().writeWith(Mono.just(dataBuffer));
     }
 
     return chain.filter(exchange);
