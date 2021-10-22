@@ -45,6 +45,8 @@ public class CustomizeFilter implements GlobalFilter, Ordered {
 
   @Override
   public int getOrder() {
+    // 越小 优先级越高
+    // 0 代表不设置优先级
     return 0;
   }
 }

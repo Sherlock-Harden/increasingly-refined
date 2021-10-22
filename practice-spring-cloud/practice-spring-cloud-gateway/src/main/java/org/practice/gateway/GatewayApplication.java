@@ -5,6 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.server.RequestPredicates;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
+import org.springframework.web.reactive.function.server.ServerResponse;
 
 /**
  * @author yuansj[yuansj@neusoft.com]
@@ -17,6 +22,9 @@ public class GatewayApplication {
     SpringApplication.run(GatewayApplication.class, args);
   }
 
+  /**
+   * 基于springcloud gateway 的路由
+   */
   @Bean
   public RouteLocator routeLocator(RouteLocatorBuilder rlb) {
 
@@ -26,4 +34,23 @@ public class GatewayApplication {
         .build();
 
   }
+
+  /**
+   * 基于 spring webflux 的 reactive 方式的路由
+   */
+  @Bean
+  public RouterFunction<ServerResponse> routerFunction(FluxHandler fluxHandler) {
+
+    RouterFunction<ServerResponse> route = RouterFunctions.route(
+        RequestPredicates.path("/reactive"),
+        resp -> ServerResponse.ok().body(BodyInserters.fromValue("reactive"))
+    ).andRoute(
+        RequestPredicates.path("/reactive1"),
+        fluxHandler::handle
+    );
+
+    return route;
+  }
+
+
 }
