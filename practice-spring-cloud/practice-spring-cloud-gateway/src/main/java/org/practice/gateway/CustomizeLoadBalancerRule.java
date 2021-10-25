@@ -6,6 +6,8 @@ import com.netflix.loadbalancer.Server;
 import java.util.List;
 
 /**
+ * 自定义负载均衡算法
+ *
  * @author yuansj[yuansj@neusoft.com]
  * @since 2021/10/21 16:07
  **/

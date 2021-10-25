@@ -14,8 +14,11 @@ public class TestController {
   @Value("${server.port}")
   private int port;
 
+  @Value("${spring.application.name}")
+  private String appName;
+
   @GetMapping("/test")
   public String test() {
-    return "当前 test 的端口是：" + port;
+    return "当前应用" + appName + "  的端口是：" + port;
   }
 }

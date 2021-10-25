@@ -2,7 +2,7 @@ server:
   port: 15998
 spring:
   application:
-    name: test-1
+    name: test-2
 
 eureka:
   client:

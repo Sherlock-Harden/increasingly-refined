@@ -1,27 +1,68 @@
 server:
   port: 15010
-spring:
-  application:
-    name: practic-spring-cloud-gateway
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true #开启从eureka拉取服务列表，并自动映射
-      routes:
-        - id: route
-          uri: lb://TEST-1  #lb 负载均衡
-          predicates: # 断言类型分为 Path Query(Query=id,. # 参数名，匹配规则支持正则) Method Host Cookie 由上往下一次匹配
-            - Path=/test-1/**
-          filters:
-            - StripPrefix=1 #去掉断言路径 N级
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:15000/eureka/
 
-#自定义负载均衡
-TEST-1:
-  ribbon:
-    NFLoadBalancerRuleClassName: org.practice.gateway.CustomizeLoadBalancerRule
+spring:
+  application:
+    name: practic-spring-cloud-gateway
+  #  redis:
+  #    port: 6379
+  #    host: 101.37.70.202
+  #    password: 'Meiyou@123!'
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启从eureka拉取服务列表，并自动映射
+      #--------------------------------------------------⬇⬇⬇普通路由规则⬇⬇⬇--------------------------------------------------
+      #      routes:
+      #        - id: route
+      #          uri: lb://TEST-1  #lb 负载均衡
+      #          predicates: # 断言类型分为 Path Query(Query=id,. # 参数名，匹配规则支持正则) Method Host Cookie 由上往下一次匹配
+      #            - Path=/test-1/**
+      #          filters:
+      #            - StripPrefix=1 #去掉断言路径 N级
+      #--------------------------------------------------⬆⬆⬆普通路由规则⬆⬆⬆--------------------------------------------------
+
+      #--------------------------------------------------⬇⬇⬇灰度发布路由规则⬇⬇⬇--------------------------------------------------
+      #      routes:
+      #        - id: huidu1
+      #          uri: lb://TEST-1
+      #          predicates:
+      #            - Path=/test-1/**
+      #            - Weight=service,55 # 两个参数  组名,流量比
+      #          filters:
+      #            - StripPrefix=1
+      #        - id: huidu2
+      #          uri: lb://TEST-2
+      #          predicates:
+      #            - Path=/test-1/**
+      #            - Weight=service,30 # 两个参数  组名,流量比
+      #          filters:
+      #            - StripPrefix=1
+      #--------------------------------------------------⬆⬆⬆灰度发布路由规则⬆⬆⬆--------------------------------------------------
+
+      #--------------------------------------------------⬇⬇⬇内置令牌桶+redis⬇⬇⬇--------------------------------------------------
+      routes:
+        - id: xianliu
+          uri: lb://TEST-1
+          predicates:
+            - Path=/test-1/**
+          filters:
+            - StripPrefix=1 #去掉断言路径 N级
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@userKeyResolver}' #自定义规则类 符合规则进入限流算法
+                redis-rate-limter.replenisRate: 1   #发送令牌速度
+                redis-rate-limter.burstCapacity: 3  #总令牌数量
+#--------------------------------------------------⬆⬆⬆内置令牌桶+redis⬆⬆⬆--------------------------------------------------
+
+#--------------------------------------------------⬇⬇⬇自定义负载均衡⬇⬇⬇--------------------------------------------------
+#TEST-1:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: org.practice.gateway.CustomizeLoadBalancerRule
+#--------------------------------------------------⬆⬆⬆自定义负载均衡⬆⬆⬆--------------------------------------------------

@@ -42,10 +42,10 @@ public class GatewayApplication {
   public RouterFunction<ServerResponse> routerFunction(FluxHandler fluxHandler) {
 
     RouterFunction<ServerResponse> route = RouterFunctions.route(
-        RequestPredicates.path("/reactive"),
+        RequestPredicates.path("/reactive-1"),
         resp -> ServerResponse.ok().body(BodyInserters.fromValue("reactive"))
     ).andRoute(
-        RequestPredicates.path("/reactive1"),
+        RequestPredicates.path("/reactive-2"),
         fluxHandler::handle
     );
 
