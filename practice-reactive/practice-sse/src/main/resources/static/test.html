@@ -4,15 +4,28 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <script>
-    var eventSource = new EventSource("/test");
+    var eventSource = new EventSource("/sse/test");
     eventSource.onmessage = function (event) {
-      document.getElementById("span").innerText = event.data;
+      document.getElementById("span1").innerText = event.data;
     }
+
+    var eventSource1 = new EventSource("/sse/subscribe?id=asdf1");
+    eventSource1.onmessage = function (event) {
+      document.getElementById("span2").innerText = event.data;
+    }
+
+    eventSource1.onopen = function (event) {
+      document.getElementById("span2").innerText = event.data;
+    }
+
   </script>
 </head>
 <body>
 
-时间毫秒数：<span id="span"></span>
-
+时间毫秒数：<span id="span1"></span>
+<br>
+<br>
+<br>
+消息内容：<span id="span2"></span>
 </body>
 </html>
