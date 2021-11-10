@@ -31,7 +31,7 @@ public class PracticeSpringApplicationRunListener extends EventPublishingRunList
     Properties properties = new Properties();
     try {
       //读取文件
-      properties.load(this.getClass().getClassLoader().getResourceAsStream("practice.properties"));
+      properties.load(this.getClass().getClassLoader().getResourceAsStream("practise.properties"));
     } catch (IOException e) {
       e.printStackTrace();
     }
