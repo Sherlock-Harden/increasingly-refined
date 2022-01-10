@@ -11,14 +11,4 @@
   <groupId>org.practice.activemq</groupId>
   <artifactId>practice-activemq</artifactId>
   <version>1.0.0</version>
-
-
-  <build>
-    <finalName>${project.artifactId}</finalName>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
 </project>
