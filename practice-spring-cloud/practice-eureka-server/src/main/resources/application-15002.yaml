@@ -1,6 +1,5 @@
 server:
   port: 15002
-
 spring:
   application:
     name: practice-eureka-server-15002

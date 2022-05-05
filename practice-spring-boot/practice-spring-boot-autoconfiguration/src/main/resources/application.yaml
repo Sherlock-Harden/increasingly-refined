@@ -1,3 +1,8 @@
+server:
+  port: 15001
+spring:
+  application:
+    name: practice-spring-boot-autoconfiguration
 config:
   beans:
     - property1: property1

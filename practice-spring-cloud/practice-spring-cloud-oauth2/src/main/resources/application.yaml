@@ -1,0 +1,8 @@
+server:
+  port: 15001
+spring:
+  application:
+    name: practice-spring-cloud-oauth2
+logging:
+  level:
+    root: debug

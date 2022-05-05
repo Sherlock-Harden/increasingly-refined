@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="application/javascript">
+
+    let sse = new EventSource("/long/polling");
+
+    sse.onmessage = function (e) {
+      console.log(e);
+      document.getElementById("text").innerText = e.data;
+    }
+
+  </script>
+</head>
+
+<body>
+
+<span id="text">xxxxxxxxxxxxxxx</span>
+</body>
+</html>

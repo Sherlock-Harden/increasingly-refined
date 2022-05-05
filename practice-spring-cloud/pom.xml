@@ -18,6 +18,7 @@
   <modules>
     <module>practice-eureka-server</module>
     <module>practice-spring-cloud-gateway</module>
+    <module>practice-spring-cloud-oauth2</module>
     <module>practice-spring-cloud-test</module>
     <module>practice-spring-cloud-test1</module>
   </modules>
@@ -27,10 +28,15 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
     </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>cn.hutool</groupId>-->
+    <!--      <artifactId>hutool-all</artifactId>-->
+    <!--      <version>5.7.22</version>-->
+    <!--    </dependency>-->
   </dependencies>
 
   <build>
-    <finalName>${project.artifactId}</finalName>
+    <finalName>${project.artifactId}-${version}</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
